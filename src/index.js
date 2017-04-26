@@ -77,7 +77,7 @@ class Login {
     });
 
     return fetch(url, {method: 'POST', headers, body}).then(response => {
-      response.json().then(json => {
+      return response.json().then(json => {
         if(json.error) {
           this.state.reject(json);
         } else {
@@ -100,6 +100,7 @@ class Login {
 
   getLoginURL() {
     const {redirect_uri, client_id, kc_idp_hint} = this.conf;
+    console.log(kc_idp_hint);
     const response_type = 'code';
     const state = uuid.v4();
     const url = this.getRealmURL() + '/protocol/openid-connect/auth?' + querystring.stringify({
