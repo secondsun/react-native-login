@@ -76,7 +76,7 @@ class Login {
       code
     });
 
-    fetch(url, {method: 'POST', headers, body}).then(response => {
+    return fetch(url, {method: 'POST', headers, body}).then(response => {
       response.json().then(json => {
         if(json.error) {
           this.state.reject(json);
